@@ -30,10 +30,14 @@ The [cumulative distribution function][cdf] for a [chi-squared][chisquare-distri
 
 <!-- <equation class="equation" label="eq:chisquare_cdf" align="center" raw="F(x;\,k) = P\left(\frac{x}{2},\,\frac{k}{2}\right)" alt="Cumulative distribution function for a chi-squared distribution."> -->
 
-<div class="equation" align="center" data-raw-text="F(x;\,k) = P\left(\frac{x}{2},\,\frac{k}{2}\right)" data-equation="eq:chisquare_cdf">
+```math
+F(x;\,k) = P\left(\frac{x}{2},\,\frac{k}{2}\right)
+```
+
+<!-- <div class="equation" align="center" data-raw-text="F(x;\,k) = P\left(\frac{x}{2},\,\frac{k}{2}\right)" data-equation="eq:chisquare_cdf">
     <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@591cf9d5c3a0cd3c1ceec961e5c49d73a68374cb/lib/node_modules/@stdlib/stats/base/dists/chisquare/cdf/docs/img/equation_chisquare_cdf.svg" alt="Cumulative distribution function for a chi-squared distribution.">
     <br>
-</div>
+</div> -->
 
 <!-- </equation> -->
 
@@ -230,7 +234,7 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 -->
 
 [chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://gitter.im/stdlib-js/stdlib/
+[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
 
 [stdlib]: https://github.com/stdlib-js/stdlib
 
