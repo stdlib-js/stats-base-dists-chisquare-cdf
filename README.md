@@ -58,38 +58,32 @@ where `k` is the degrees of freedom and `P` is the lower regularized incomplete 
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-dists-chisquare-cdf
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-cdf = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-chisquare-cdf@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var cdf = require( 'path/to/vendor/umd/stats-base-dists-chisquare-cdf/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-chisquare-cdf@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.cdf;
-})();
-</script>
+var cdf = require( '@stdlib/stats-base-dists-chisquare-cdf' );
 ```
 
 #### cdf( x, k )
@@ -164,7 +158,87 @@ y = mycdf( 1.5 );
 
 <!-- /.usage -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/stats/base/dists/chisquare/cdf.h"
+```
+
+#### stdlib_base_dists_chisquare_cdf( x, k )
+
+Evaluates the [cumulative distribution function][cdf] (CDF) for a [chi-squared][chisquare-distribution] distribution with degrees of freedom `k`.
+
+```c
+double out = stdlib_base_dists_chisquare_cdf( 2.0, 1.0 );
+// returns ~0.843
+
+out = stdlib_base_dists_chisquare_cdf( 2.0, 3.0 );
+// returns ~0.428
+```
+
+The function accepts the following arguments:
+
+-   **x**: `[in] double` input value.
+-   **k**: `[in] double` degrees of freedom.
+
+```c
+double stdlib_base_dists_chisquare_cdf( const double x, const double k );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/stats/base/dists/chisquare/cdf.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+static double random_uniform( double min, double max ) {
+    double scale = rand() / (double) RAND_MAX;
+    return min + ( scale * ( max - min ) );
+}
+
+int main( void ) {
+    double x;
+    double k;
+    double y;
+    int i;
+
+    for ( i = 0; i < 25; i++ ) {
+        x = random_uniform( 0.0, 10.0 );
+        k = random_uniform( 1.0, 10.0 );
+        y = stdlib_base_dists_chisquare_cdf( x, k );
+        printf( "x: %lf, k: %lf, F(x;k): %lf\n", x, k, y );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 * * *
 
@@ -174,16 +248,11 @@ y = mycdf( 1.5 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/console-log-each-map@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-chisquare-cdf@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
+var uniform = require( '@stdlib/random-array-uniform' );
+var logEachMap = require( '@stdlib/console-log-each-map' );
+var cdf = require( '@stdlib/stats-base-dists-chisquare-cdf' );
 
 var opts = {
     'dtype': 'float64'
@@ -191,12 +260,7 @@ var opts = {
 var x = uniform( 20, 0.0, 10.0, opts );
 var k = discreteUniform( 20, 0, 10, opts );
 
-logEachMap( 'x: %0.4f, k: %0.4f, F(x;k): %0.4f', x, k, cdf );
-
-})();
-</script>
-</body>
-</html>
+logEachMap( 'x: %0.4f, k: %d, F(x;k): %0.4f', x, k, cdf );
 ```
 
 </section>
@@ -237,7 +301,7 @@ See [LICENSE][stdlib-license].
 
 ## Copyright
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 </section>
 
@@ -263,8 +327,8 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 -->
 
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
+[chat-image]: https://img.shields.io/badge/zulip-join_chat-brightgreen.svg
+[chat-url]: https://stdlib.zulipchat.com
 
 [stdlib]: https://github.com/stdlib-js/stdlib
 
